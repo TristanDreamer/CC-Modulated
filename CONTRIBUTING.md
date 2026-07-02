@@ -1,5 +1,5 @@
 # Our lovely volunteers
-~Please don't break anything. <3~
+<sub>Please don't break anything. <3</sub>
 
 ---
 
