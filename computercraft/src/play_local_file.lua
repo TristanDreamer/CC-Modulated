@@ -4,7 +4,7 @@ if not socket then
     error("No simpleradio speaker/socket peripheral found")
 end
 
-local CHUNK_SAMPLES = 960 * 8 -- must be a multiple of 960'
+local CHUNK_SAMPLES = 960 * 16 -- must be a multiple of 960'
 local BYTES_PER_SAMPLE = 2
 local CHUNK_DURATION_MS = (CHUNK_SAMPLES / 48000) * 1000
 
