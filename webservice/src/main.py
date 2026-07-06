@@ -1,10 +1,24 @@
-from app import create_app, socketio
+from flask import Flask
+from flask_sock import Sock
 
-app = create_app()
+app = Flask(__name__)
+sock = Sock(app)
 
 @app.route("/")
-def landing():
-    return '<h1>This is the landing page</h1>'
+def root():
+    return "<p>Hello Mum!</p>"
 
-if __name__ == '__main__':
-    socketio.run(app)
+@sock.route('/echo')
+def echo(ws):
+    while True:
+        data = ws.receive()
+        ws.send(data)
+
+@sock.route("/connected")
+def connected(ws):
+    ws.send("Connected!")
+   
+    while ws.connected:
+        data = input("Server > ")
+        print(ws.connected)
+        ws.send(data)
