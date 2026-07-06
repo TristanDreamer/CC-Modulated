@@ -4,21 +4,13 @@ from flask_sock import Sock
 app = Flask(__name__)
 sock = Sock(app)
 
-@app.route("/")
-def root():
-    return "<p>Hello Mum!</p>"
+from. import events, routes
 
-@sock.route('/echo')
-def echo(ws):
-    while True:
-        data = ws.receive()
-        ws.send(data)
+app.register_blueprint(events.bp)
+app.register_blueprint(routes.bp)
 
-@sock.route("/connected")
-def connected(ws):
-    ws.send("Connected!")
-   
-    while ws.connected:
-        data = input("Server > ")
-        print(ws.connected)
-        ws.send(data)
+@app.route("/test")
+def test():
+    from flask import render_template
+    return render_template("root.html")
+    return "<p1>Test</p1>"
