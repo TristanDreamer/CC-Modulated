@@ -1,0 +1,1 @@
+flask --app webservice.src.main run
