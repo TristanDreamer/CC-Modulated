@@ -6,8 +6,6 @@ def test_connect(auth):
     print("Connection!")
     emit('my response', {'data': 'Connected'})
     
-    emit('log', {'data': 'Connected'}, broadcast=True)
-
 @socketio.on('disconnect')
 def test_disconnect(reason):
     print('Client disconnected, reason:', reason)
