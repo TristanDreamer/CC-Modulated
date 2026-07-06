@@ -1,12 +1,17 @@
 require("read_Int_16_LE")
 
-local function route_sound_to_device(data, socket, volume)
+function route_sound_to_device(data, socket, volume)
     local pos = 1
     local total = #data
     local CHUNK_SAMPLES = 960 * 16
     local BYTES_PER_SAMPLE = 2
     local CHUNK_DURATION_MS = (CHUNK_SAMPLES / 48000) * 1000
-    volume = volume or 1
+    local nextTime = os.epoch("utc")
+    if (volume >= 0 and volume <= 1) ~= true then
+        print("Set Volume To : 1")
+        volume = 1
+    end
+    print("Volume : "..volume)
     
     while pos < total do
         local buffer = {}
