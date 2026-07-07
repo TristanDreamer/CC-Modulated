@@ -8,3 +8,5 @@ def connection(ws):
         data = input("Server > ")
         print(ws.connected)
         ws.send(data)
+        if data == "end":
+            break
