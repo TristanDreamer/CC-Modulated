@@ -11,5 +11,5 @@ toggle.addEventListener("click", () => {
 });
 
 document.getElementById("cta-btn").addEventListener("click", () => {
-    alert("Thanks for visiting!");
+    alert("Thanks for starting!\nYou will explode now 💣");
 });
